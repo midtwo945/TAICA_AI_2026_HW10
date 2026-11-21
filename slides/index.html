@@ -92,20 +92,24 @@ thead th{color:var(--muted);font-weight:500;font-size:.9em}
 .progress{position:fixed;left:0;top:0;height:3px;background:var(--accent);transition:width .3s}
 .theme{position:fixed;right:16px;top:12px;font:inherit;font-size:.8rem;background:none;border:1px solid var(--line);
   color:var(--muted);border-radius:999px;padding:3px 10px;cursor:pointer}
-.hint{position:fixed;left:16px;top:12px;font-size:.75rem;color:var(--muted)}
+.home{position:fixed;left:16px;top:12px;font-size:.8rem;color:var(--muted);text-decoration:none;border:1px solid var(--line);
+  border-radius:999px;padding:3px 10px;z-index:5}
+.home:hover{border-color:var(--accent);color:var(--accent)}
+.hint{position:fixed;left:96px;top:15px;font-size:.75rem;color:var(--muted)}
 @media (max-width:760px){
   .deck{padding:44px 12px 68px;align-items:stretch}
   .slide{height:auto;min-height:0;max-height:calc(100vh - 116px)}
   .hint{display:none}
 }
 @media print{
-  body{overflow:visible} .nav,.progress,.theme,.hint{display:none}
+  body{overflow:visible} .nav,.progress,.theme,.hint,.home{display:none}
   .slide{display:flex!important;page-break-after:always;box-shadow:none;height:auto}
 }
 </style>
 </head>
 <body>
 <div class="progress" id="progress"></div>
+<a class="home" href="../">← 首頁</a>
 <span class="hint">← → 或空白鍵翻頁</span>
 <button class="theme" id="theme" type="button">深色／淺色</button>
 <main class="deck" id="deck">
