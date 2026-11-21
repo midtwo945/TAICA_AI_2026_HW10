@@ -255,3 +255,10 @@
 - 改完後重跑：lint ✅、check_outline ✅、check_slides ✅、build_slides（18 頁）
 - 在遠端的 Initial commit 之上新增 commit `22e9367`，fast-forward 推送，沒有強制覆蓋；遠端共 50 個檔案、0 個 PDF
 - GitHub Pages 尚未開啟（網址目前回 404），需由使用者在 repo 的 Settings → Pages 開啟
+
+### [2026-11-21] N9 瀏覽檢查（補檢查）｜❌ 發現遺漏
+- 使用者回報：網站「長得不對」
+- 原因：GitHub Pages 的 **根網址**（Settings 裡的「Visit site」）沒有首頁，GitHub 直接把 README 轉成純文件頁；流程圖顯示成 Mermaid 原始碼，`wiki/checks/` 這類資料夾連結在 Pages 上是 404
+- N9 先前只檢查了 `/slides/`，**沒檢查使用者實際會先打開的根網址** → 檢查範圍漏了
+- 處理：新增根目錄 `index.html` 首頁（主按鈕連到簡報、作業 6 項的入口連到 GitHub 上可正常顯示的頁面、流程圖直接用 HTML 畫）；README 開頭加上首頁與簡報網址
+- 本機預覽：1280×800、手機 375×812 都沒有水平溢出，首頁的簡報連結正常

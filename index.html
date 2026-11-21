@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Transformer LLM Wiki</title>
+<meta name="description" content="用 LLM Wiki 製作 Transformer 教學簡報：Wiki、簡報、graph 設計、執行紀錄與反思。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f1ea;--card:#fffdf8;--ink:#1f2328;--muted:#6b6f76;--line:#e3ddd0;--accent:#c2410c;--accent-soft:#fde7da}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--bg:#16181c;--card:#1e2127;--ink:#e8e6e1;--muted:#9aa0a8;--line:#2e333b;--accent:#fb923c;--accent-soft:#3a2516}}
+:root[data-theme="dark"]{--bg:#16181c;--card:#1e2127;--ink:#e8e6e1;--muted:#9aa0a8;--line:#2e333b;--accent:#fb923c;--accent-soft:#3a2516}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans TC",system-ui,sans-serif;line-height:1.65}
+main{max-width:960px;margin:0 auto;padding:48px 16px 64px}
+.kicker{color:var(--accent);font-weight:700;letter-spacing:.08em;font-size:.85rem}
+h1{font-size:clamp(1.8rem,4.5vw,2.8rem);line-height:1.25;margin:.3em 0 .4em}
+.lead{color:var(--muted);font-size:1.05rem;max-width:640px;margin:0 0 28px}
+.cta{display:inline-flex;align-items:center;gap:10px;background:var(--accent);color:#fff;text-decoration:none;
+  font-weight:700;padding:14px 26px;border-radius:999px;font-size:1.05rem;box-shadow:0 8px 24px rgba(194,65,12,.25)}
+.cta:hover{filter:brightness(1.08)}
+.cta-note{display:block;margin-top:10px;color:var(--muted);font-size:.85rem}
+h2{font-size:1.25rem;margin:48px 0 14px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.card{display:block;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px;
+  text-decoration:none;color:var(--ink);transition:border-color .2s,transform .2s}
+.card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.card b{display:block;font-size:1.02rem;margin-bottom:4px}
+.card span{color:var(--muted);font-size:.9rem}
+.card .n{color:var(--accent);font-weight:700;margin-right:6px}
+table{width:100%;border-collapse:collapse;background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:.92rem}
+th,td{padding:10px 14px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{color:var(--muted);font-weight:500}
+tr:last-child td{border-bottom:none}
+.flow{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;overflow-x:auto}
+.phase{font-size:.8rem;color:var(--muted);margin:4px 0 8px;font-weight:500}
+.row{display:flex;flex-wrap:wrap;align-items:center;gap:6px;margin-bottom:6px}
+.node{border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:6px 10px;font-size:.85rem;white-space:nowrap}
+.node.user{border-color:var(--accent)}
+.node.star{background:var(--accent-soft);border-color:var(--accent);font-weight:700}
+.arrow{color:var(--muted)}
+.back{font-size:.82rem;color:var(--muted);margin:10px 0 0;padding-left:1.1em}
+.back li{margin:2px 0}
+.legend{font-size:.8rem;color:var(--muted);margin-top:10px}
+footer{margin-top:48px;color:var(--muted);font-size:.85rem}
+footer a{color:var(--muted)}
+.theme{position:fixed;right:16px;top:12px;font:inherit;font-size:.8rem;background:none;border:1px solid var(--line);
+  color:var(--muted);border-radius:999px;padding:3px 10px;cursor:pointer}
+</style>
+</head>
+<body>
+<button class="theme" id="theme" type="button">深色／淺色</button>
+<main>
+  <div class="kicker">LLM WIKI 作業</div>
+  <h1>Transformer 論文與其應用變化</h1>
+  <p class="lead">以 6 篇關鍵論文建立 LLM Wiki（28 頁），再只用 Wiki 的內容產生一份 18 頁的教學簡報：從 attention 的誕生，到 Transformer，再到 BERT、GPT-3、T5、ViT。</p>
+  <a class="cta" href="slides/">開啟教學簡報 →</a>
+  <span class="cta-note">18 頁｜← → 或空白鍵翻頁，手機可滑動｜每頁底部標註內容來自哪個 Wiki 頁面</span>
+
+  <h2>作業內容</h2>
+  <div class="grid">
+    <a class="card" href="slides/"><b><span class="n">1</span>教學 HTML 簡報</b><span>18 頁，第 8 頁有遮罩切換的互動 demo</span></a>
+    <a class="card" href="https://github.com/midtwo945/TAICA_AI_2026_HW10/blob/main/wiki/index.md"><b><span class="n">2</span>LLM Wiki</b><span>28 頁：論文頁 6、概念頁 17、模型頁 5，每段都標註論文出處</span></a>
+    <a class="card" href="https://github.com/midtwo945/TAICA_AI_2026_HW10/blob/main/docs/workflow.md"><b><span class="n">3</span>Loop / Graph 設計</b><span>11 個節點、R1～R20 檢查規則、為什麼這樣設計</span></a>
+    <a class="card" href="https://github.com/midtwo945/TAICA_AI_2026_HW10/blob/main/wiki/log.md"><b><span class="n">4</span>執行紀錄</b><span>每個節點每次執行的結果、不通過的原因與處理</span></a>
+    <a class="card" href="https://github.com/midtwo945/TAICA_AI_2026_HW10/tree/main/wiki/checks"><b><span class="n">5</span>檢查紀錄</b><span>每篇論文逐段對照原文（N3.5）、簡報內容檢查（N7）</span></a>
+    <a class="card" href="https://github.com/midtwo945/TAICA_AI_2026_HW10/blob/main/docs/reflection.md"><b><span class="n">6</span>反思</b><span>哪個節點最常出錯、檢查往前移到哪裡、graph 怎麼改</span></a>
+  </div>
+
+  <h2>Graph 流程</h2>
+  <div class="flow">
+    <div class="phase">階段一：建 Wiki（每篇論文跑一次，共 6 次）</div>
+    <div class="row">
+      <span class="node">N1 取得資料</span><span class="arrow">→</span>
+      <span class="node user">N2 討論（使用者同意）</span><span class="arrow">→</span>
+      <span class="node">N3 寫入 Wiki</span><span class="arrow">→</span>
+      <span class="node star">N3.5 原文比對 ★</span><span class="arrow">→</span>
+      <span class="node">N4 Lint</span>
+    </div>
+    <div class="phase" style="margin-top:14px">階段二：做簡報</div>
+    <div class="row">
+      <span class="node user">N5 規劃大綱（使用者確認）</span><span class="arrow">→</span>
+      <span class="node">N6 產生內容</span><span class="arrow">→</span>
+      <span class="node">N7 內容檢查</span><span class="arrow">→</span>
+      <span class="node">N8 產生 HTML</span><span class="arrow">→</span>
+      <span class="node">N9 瀏覽檢查</span><span class="arrow">→</span>
+      <span class="node user">N10 發布（使用者同意）</span>
+    </div>
+    <ul class="back">
+      <li>N3.5 找不到原文句子、N4 lint 不通過 → 回 N3 修改</li>
+      <li>N7 內容寫錯 → 回 N6；<b>Wiki 沒有這個知識 → 回 N3 先補 Wiki</b></li>
+      <li>N9 翻頁或版面有問題 → 回 N8</li>
+    </ul>
+    <div class="legend">★ 實際執行後新增的節點：lint 只能抓格式錯誤，內容錯誤要在寫入後立刻回原文比對。｜橘框 = 由使用者把關</div>
+  </div>
+
+  <h2>實際執行結果</h2>
+  <table>
+    <thead><tr><th>節點</th><th>結果</th></tr></thead>
+    <tbody>
+      <tr><td>N3.5 原文比對</td><td>論文 3～6 共抓到 18 個內容錯誤（3、8、1、6 個），全部修正</td></tr>
+      <tr><td>N4 Lint</td><td>7 次執行，1 次不通過（缺出處），重試後通過</td></tr>
+      <tr><td>N7 內容檢查</td><td>第 1 次不通過：術語沒解釋 21 個、來源不符 1 個、Wiki 缺知識 1 個（回 N3 補寫）；第 2 次通過</td></tr>
+      <tr><td>N9 瀏覽檢查</td><td>第 1 次不通過：1 頁超出畫面、鍵盤翻頁程式出錯；修正後 5 種螢幕尺寸全部通過</td></tr>
+    </tbody>
+  </table>
+
+  <footer>原始碼與完整說明：<a href="https://github.com/midtwo945/TAICA_AI_2026_HW10">github.com/midtwo945/TAICA_AI_2026_HW10</a>｜論文全文請見各 Wiki 論文頁的 arXiv 連結</footer>
+</main>
+<script>
+(function(){const r=document.documentElement;try{const s=localStorage.getItem('theme');if(s)r.dataset.theme=s}catch(e){}
+document.getElementById('theme').onclick=()=>{const d=r.dataset.theme?r.dataset.theme==='dark':matchMedia('(prefers-color-scheme: dark)').matches;
+r.dataset.theme=d?'light':'dark';try{localStorage.setItem('theme',r.dataset.theme)}catch(e){}}})();
+</script>
+</body>
+</html>

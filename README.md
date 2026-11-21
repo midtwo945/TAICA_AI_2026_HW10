@@ -1,5 +1,7 @@
 # LLM Wiki 教學簡報：Transformer 論文與其應用變化
 
+> 🌐 **網站首頁**：https://midtwo945.github.io/TAICA_AI_2026_HW10/ ｜ 📊 **教學簡報**：https://midtwo945.github.io/TAICA_AI_2026_HW10/slides/
+
 ## 1. 主題與簡介
 
 **主題：Transformer 論文與其應用變化**
