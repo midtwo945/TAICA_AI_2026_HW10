@@ -1,0 +1,5 @@
+raw/*.pdf
+raw/*.txt
+__pycache__/
+*.pyc
+.claude/
