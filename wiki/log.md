@@ -249,3 +249,9 @@
 ### [2026-11-21] N10 發布｜⏳ 等待使用者同意（R16）
 - 遠端 repo 目前只有 1 個 Initial commit（README.md 只有標題），可以在它之上新增 commit，不需要強制覆蓋
 - 待使用者決定：`raw/` 的論文 PDF 與全文文字檔（約 16 MB）是否公開上傳（著作權考量）
+
+### [2026-11-21] N10 發布｜✅ 推送完成（R16：使用者回覆「改連 arXiv 再推」）
+- 使用者決定：論文 PDF 與全文不公開上傳 → Wiki 中 79 個原文連結改指 arXiv；新增 `raw/README.md`、`scripts/fetch_raw.sh`（可重新下載）、`.gitignore`
+- 改完後重跑：lint ✅、check_outline ✅、check_slides ✅、build_slides（18 頁）
+- 在遠端的 Initial commit 之上新增 commit `22e9367`，fast-forward 推送，沒有強制覆蓋；遠端共 50 個檔案、0 個 PDF
+- GitHub Pages 尚未開啟（網址目前回 404），需由使用者在 repo 的 Settings → Pages 開啟
